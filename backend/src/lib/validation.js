@@ -1,11 +1,8 @@
-/** Small, dependency-free input helpers shared by the controllers. */
+
 
 export const isString = (value) => typeof value === "string";
 
-/**
- * Strict MongoDB ObjectId check. mongoose.isValidObjectId() also accepts any 12-character
- * string, which would let junk through to the database layer, so we require 24 hex chars.
- */
+
 export const isValidId = (value) =>
   typeof value === "string" && /^[a-f\d]{24}$/i.test(value);
 
@@ -26,15 +23,11 @@ export function normalizeProfilePicUrl(value) {
   }
 }
 
-/**
- * Builds the default avatar URL. The seed is the user's database id - an opaque value - and
- * NEVER their email address, because the avatar URL is shown to other users and sent to the
- * third-party avatar service.
- */
+
 export const buildDefaultAvatarUrl = (userId) =>
   `https://api.dicebear.com/10.x/avataaars/svg?seed=${encodeURIComponent(String(userId))}`;
 
-/** Public profile fields that other users are allowed to see. No email, no password. */
+
 export const PUBLIC_USER_FIELDS = "fullName profilePic bio role interests location";
 
 export const ALLOWED_ROLES = [

@@ -11,11 +11,7 @@ function getClient() {
   return client;
 }
 
-/**
- * Creates or updates a user inside Stream. Throws on failure so the caller decides what to
- * do. Callers must log `error.message` only: the raw error object holds the request headers,
- * including a never-expiring server-side Stream token.
- */
+
 export const upsertStreamUser = async (userData) => {
   // Automated tests must never call the real Stream service.
   if (config.isTest) return userData;
@@ -24,9 +20,9 @@ export const upsertStreamUser = async (userData) => {
   return userData;
 };
 
-/** Creates a Stream user token. Works offline - it only signs a JWT with the API secret. */
+
 export const generateStreamToken = (userId) => getClient().createToken(String(userId));
 
-/** Logs a Stream failure without leaking request headers or credentials. */
+
 export const describeStreamError = (error) =>
   error?.response?.data?.message || error?.message || "unknown Stream error";

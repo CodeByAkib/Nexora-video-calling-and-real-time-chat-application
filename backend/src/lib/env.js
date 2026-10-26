@@ -1,11 +1,5 @@
 import "dotenv/config";
 
-/**
- * Central place that reads and validates every environment variable the backend uses.
- *
- * Nothing in here ever prints a variable's VALUE - only its name - so it is safe to run
- * on a hosting platform whose logs other people can read.
- */
 
 const NODE_ENV = process.env.NODE_ENV || "development";
 const isProd = NODE_ENV === "production";
@@ -16,10 +10,7 @@ const warnings = [];
 
 const clean = (value) => (typeof value === "string" ? value.trim() : "");
 
-/**
- * Read a variable. `legacy` is an old (misspelled) name that is still accepted so existing
- * .env files keep working, but a warning asks the owner to rename it.
- */
+
 function read(name, { legacy } = {}) {
   const value = clean(process.env[name]);
   if (value) return value;
@@ -36,7 +27,7 @@ function require_(name, value) {
   return value;
 }
 
-// ---- Core ---------------------------------------------------------------------------------
+
 const port = Number(process.env.PORT) || 5001;
 const mongoUri = require_("MONGO_URI", read("MONGO_URI"));
 
@@ -47,7 +38,7 @@ if (jwtSecret && jwtSecret.length < 32) {
   else warnings.push(message);
 }
 
-// ---- Stream (STEAM_* was a typo in earlier versions; still accepted) ------------------------
+
 const streamApiKey = require_(
   "STREAM_API_KEY",
   read("STREAM_API_KEY", { legacy: "STEAM_API_KEY" })
@@ -57,7 +48,7 @@ const streamApiSecret = require_(
   read("STREAM_API_SECRET", { legacy: "STEAM_API_SECRET" })
 );
 
-// ---- Browser origins that may call this API (CORS + CSRF origin check) -----------------------
+
 const DEV_ORIGINS = ["http://localhost:5173", "http://localhost:5174"];
 
 const clientOrigins = clean(process.env.CLIENT_URL)
@@ -86,16 +77,13 @@ if (isProd && clientOrigins.length === 0) {
 
 const allowedOrigins = [...new Set([...clientOrigins, ...(isProd ? [] : DEV_ORIGINS)])];
 
-// ---- Cookies --------------------------------------------------------------------------------
-// "strict" suits a frontend and API served from the same site (e.g. Vercel rewrite to the API).
-// Use "none" only for a cross-site setup; it forces the Secure flag and relies on the
-// Origin check in security.middleware.js for CSRF protection.
+
 const sameSite = (clean(process.env.COOKIE_SAME_SITE) || "strict").toLowerCase();
 if (!["strict", "lax", "none"].includes(sameSite)) {
   problems.push("COOKIE_SAME_SITE must be one of: strict, lax, none.");
 }
 
-// ---- Reverse proxy (Render, Vercel rewrites, ...) ---------------------------------------------
+
 const trustProxyRaw = clean(process.env.TRUST_PROXY);
 const trustProxy = trustProxyRaw !== "" ? Number(trustProxyRaw) : isProd ? 1 : 0;
 if (!Number.isInteger(trustProxy) || trustProxy < 0) {

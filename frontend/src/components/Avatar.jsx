@@ -9,11 +9,7 @@ const getInitials = (name) =>
     .join("")
     .toUpperCase() || "N";
 
-/**
- * Profile picture with a built-in fallback. If the image URL is empty OR fails to load (a dead
- * provider, a 502, an old stored URL) the user's initials are shown instead - for every user,
- * old or new. `className` sizes the circle/square; the fallback fills it.
- */
+
 const Avatar = ({ src, name, className = "size-10", textClassName = "text-sm" }) => {
   // Remember which src failed, so a *new* src gets a fresh chance to load.
   const [failedSrc, setFailedSrc] = useState(null);

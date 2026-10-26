@@ -2,12 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-  Stream Chat dark theme for Nexora.
-  The chat is rendered with theme="str-chat__theme-dark" (see ChatPage); these variables swap
-  Stream's palette for Nexora's navy / violet / cyan. Variables are used instead of overriding
-  individual classes, so nothing fights Stream's own layout and heights.
-*/
+
 .str-chat {
   --str-chat__primary-color: #8b5cf6;
   --str-chat__active-primary-color: #7c3aed;
@@ -24,7 +19,7 @@
   --str-chat__border-radius-circle: 9999px;
 }
 
-/* Fill the space the page gives us (the page header takes its own height). */
+
 .str-chat.str-chat__theme-dark,
 .str-chat__channel,
 .str-chat__container,
@@ -37,7 +32,7 @@
   background: var(--str-chat__background-color);
 }
 
-/* One border at the edges only - no nested box inside a box. */
+
 .str-chat__container {
   border: 0;
   box-shadow: none;

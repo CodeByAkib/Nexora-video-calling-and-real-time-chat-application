@@ -1,19 +1,4 @@
-/**
- * One-off, NON-destructive avatar clean-up for existing users.
- *
- * Finds profilePic values that are either
- *   (a) from the retired avatar.iran.liara.run provider (the source of the 502 on 74.png), or
- *   (b) DiceBear URLs seeded with an e-mail address (which leaks the e-mail to anyone who sees the URL),
- * and replaces them with a DiceBear URL seeded by the user's database id.
- *
- * It only touches the profilePic field. It never deletes a user or any other field.
- *
- *   node scripts/migrate-avatars.js                 -> DRY RUN: prints what would change, writes nothing
- *   node scripts/migrate-avatars.js --apply         -> writes the changes
- *   node scripts/migrate-avatars.js --apply --sync-stream   -> also refreshes the avatar inside Stream
- *
- * Uses MONGO_URI from the environment / .env. Take a database backup before using --apply.
- */
+
 import mongoose from "mongoose";
 import { config, getConfigProblems } from "../src/lib/env.js";
 import User from "../src/models/User.js";

@@ -23,8 +23,7 @@ export default [
     rules: {
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
-      // Components used only as <Icon /> in JSX look unused to core ESLint, including when they are
-      // destructured parameters (args), so the capitalised-name exemption must cover both.
+       
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]', argsIgnorePattern: '^[A-Z_]' }],
       'react-refresh/only-export-components': [
         'warn',

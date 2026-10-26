@@ -12,10 +12,10 @@ export const protectRoute = async (req, res, next) => {
 
     let decoded;
     try {
-      // Pin the algorithm so a token can never pick a weaker one for itself.
+      
       decoded = jwt.verify(token, config.jwtSecret, { algorithms: ["HS256"] });
     } catch {
-      // Expired, malformed or wrongly-signed tokens are the CLIENT's problem: 401, not 500.
+    
       return res.status(401).json({ message: "Unauthorized - Invalid or expired token" });
     }
 

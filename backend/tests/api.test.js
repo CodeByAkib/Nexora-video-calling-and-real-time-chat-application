@@ -1,9 +1,4 @@
-/**
- * Integration tests for the Nexora API (real Express app + real MongoDB, Stream mocked off).
- *
- * Run:  TEST_MONGO_URI=mongodb://127.0.0.1:27017/nexora_test npm test
- * Safety: the database name MUST end in "_test" - the suite wipes it when it finishes.
- */
+
 import { before, after, describe, it } from "node:test";
 import assert from "node:assert/strict";
 import crypto from "node:crypto";

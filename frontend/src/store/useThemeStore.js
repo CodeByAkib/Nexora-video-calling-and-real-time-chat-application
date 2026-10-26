@@ -4,7 +4,7 @@ import { THEMES } from "../constants";
 const STORAGE_KEY = "nexora-theme";
 const DEFAULT_THEME = "nexora";
 
-// localStorage can be unavailable (private mode, blocked storage) - never let that crash the app.
+
 const readStoredTheme = () => {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);

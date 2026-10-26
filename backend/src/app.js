@@ -17,7 +17,7 @@ import {
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-/** Builds the Express app. Kept separate from server.js so tests can run it in-process. */
+
 export function createApp({ loginLimit, signupLimit } = {}) {
   const app = express();
 
@@ -35,7 +35,7 @@ export function createApp({ loginLimit, signupLimit } = {}) {
   app.use(cookieParser());
   app.use("/api", requireTrustedOrigin(config.allowedOrigins));
 
-  // Lightweight liveness probe for hosting platforms (no secrets, no database access).
+  
   app.get("/api/health", (req, res) => res.status(200).json({ status: "ok" }));
 
   app.use("/api/auth/login", createLoginLimiter({ limit: loginLimit }));
@@ -45,18 +45,17 @@ export function createApp({ loginLimit, signupLimit } = {}) {
   app.use("/api/users", userRoutes);
   app.use("/api/chat", chatRoutes);
 
-  // Unknown API paths get JSON, never the SPA page.
+  
   app.use("/api", (req, res) => res.status(404).json({ message: "Not found" }));
 
-  // Optional single-host deployment: serve the built frontend if it is present.
+  
   const distPath = path.resolve(__dirname, "../../frontend/dist");
   if (config.isProd && fs.existsSync(path.join(distPath, "index.html"))) {
     app.use(express.static(distPath));
     app.get("*", (req, res) => res.sendFile(path.join(distPath, "index.html")));
   }
 
-  // Central error handler: malformed JSON etc. become clean JSON, never a stack trace.
-  // eslint-disable-next-line no-unused-vars
+  
   app.use((err, req, res, next) => {
     if (err?.type === "entity.parse.failed") {
       return res.status(400).json({ message: "Malformed JSON body" });
