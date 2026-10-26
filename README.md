@@ -1,43 +1,219 @@
 # Nexora 💬
 
-Nexora is a real-time communication app where people can connect with others who share similar interests. Users can discover new people, send friend requests, chat in real time, and make video calls—all in one place.
+### Connect, Chat & Call
 
-## Tech Stack
+Nexora is a real-time communication application that helps people connect with others, build friendships, exchange messages, and communicate through video calls—all in one place.
 
-**Frontend:** React 19, Vite, Tailwind CSS, daisyUI, React Query
-**Backend:** Node.js, Express.js, MongoDB, Mongoose, JWT
-**Chat & Video:** Stream Chat and Stream Video
+I built Nexora to bring essential communication features together in a simple and user-friendly interface. Users can discover people, send friend requests, manage their profiles, chat in real time, and connect through video calls.
 
-## Project Structure
+## ✨ Features
+
+### 🔐 1. User Authentication
+
+Users can create an account and log in securely to access the application.
+
+* User registration and login
+* Password hashing
+* JWT-based authentication
+* Protected routes for authenticated users
+* Cookie-based authentication
+
+### 👤 2. Personalized User Profiles
+
+Users can create a profile and share information about themselves.
+
+* Complete the onboarding process
+* Add personal and profile information
+* Set a profile picture
+* Customize the information displayed on their profile
+
+### 🔎 3. Discover and Connect with People
+
+Nexora helps users find and connect with other people on the platform.
+
+* Discover other registered users
+* Explore potential connections
+* Send friend requests
+* Accept incoming friend requests
+* Build a list of friends
+
+### 💬 4. Real-Time Messaging
+
+Users can communicate with their friends through real-time chat.
+
+* Send and receive messages
+* Exchange messages without manually refreshing the page
+* Access the chat interface
+* Use Stream Chat to power messaging functionality
+
+### 📹 5. Video Calling
+
+Nexora allows users to communicate face-to-face through video calls.
+
+* Start video calls
+* Join calls with other users
+* Communicate using audio and video
+* Use Stream Video to power calling functionality
+
+Camera and microphone access depend on browser permissions and device availability.
+
+### 🔔 6. Friend Request Notifications
+
+Users can view incoming friend requests and respond to them.
+
+* View received friend requests
+* Check request-related notifications
+* Accept friend requests
+
+**Current limitation:** Rejecting friend requests is not currently supported.
+
+### 🎨 7. Responsive User Interface
+
+The frontend provides a modern interface for navigating the application's features.
+
+* React-based user interface
+* Tailwind CSS styling
+* daisyUI components
+* Theme selection
+* Reusable UI components
+* React Router-based page navigation
+
+### 🔒 8. Backend and Data Management
+
+The backend handles authentication, user information, API requests, and database operations.
+
+* REST API built with Express.js
+* MongoDB database integration
+* Mongoose models
+* Authentication middleware
+* Input validation
+* Security middleware
+
+### 🧪 9. Automated Testing
+
+The project includes automated tests for selected frontend and backend functionality.
+
+* Backend API tests
+* Frontend component tests
+* Utility function tests
+* ESLint-based code checking
+* Production build verification
+
+Automated tests do not replace manual testing of real-time messaging and video calling with valid Stream credentials.
+
+---
+
+## 🛠️ Tech Stack
+
+| Category        | Technologies                                      |
+| --------------- | ------------------------------------------------- |
+| Frontend        | React 19, Vite                                    |
+| Styling         | Tailwind CSS, daisyUI                             |
+| Data Fetching   | React Query                                       |
+| Backend         | Node.js, Express.js                               |
+| Database        | MongoDB, Mongoose                                 |
+| Authentication  | JWT, HTTP cookies, bcrypt                         |
+| Real-Time Chat  | Stream Chat                                       |
+| Video Calling   | Stream Video                                      |
+| Testing         | Vitest, React Testing Library, backend test suite |
+| Version Control | Git, GitHub                                       |
+
+## 📁 Project Structure
 
 ```text
 Nexora/
-├── backend/       # Express API, database models, tests and scripts
-└── frontend/      # React application, components and pages
+├── backend/
+│   ├── scripts/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── lib/
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── app.js
+│   │   └── server.js
+│   ├── tests/
+│   ├── .env.example
+│   └── package.json
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── lib/
+│   │   ├── pages/
+│   │   ├── store/
+│   │   └── App.jsx
+│   ├── .env.example
+│   └── package.json
+│
+├── .gitignore
+└── README.md
 ```
 
-## Getting Started
+## ⚙️ How Nexora Works
 
-Follow these steps to run Nexora locally.
+Nexora uses a frontend, a backend API, a database, and Stream's communication services.
+
+1. **User interaction:** Users interact with the React frontend to register, log in, discover people, and use communication features.
+2. **API requests:** The frontend communicates with the Express backend for application data and authentication.
+3. **Authentication:** The backend verifies user credentials and manages authentication using JWT and cookies.
+4. **Database operations:** MongoDB stores application data, including user information and friend-request records.
+5. **Real-time communication:** Stream Chat and Stream Video provide messaging and video-calling functionality.
+
+This architecture separates the user interface, application logic, data storage, and communication services.
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to run Nexora on your local machine.
 
 ### Prerequisites
 
-Before getting started, make sure you have:
+Make sure you have:
 
 * Node.js 20 or later
+* npm
 * MongoDB running locally or a MongoDB Atlas account
-* A Stream account with an application created
+* A Stream account with an application configured for chat and video
 
-### 1. Set Up the Backend
+### 1. Clone the Repository
 
-Open a terminal and run:
+```bash
+git clone https://github.com/CodeByAkib/Nexora--video-calling-and-real-time-chat-application.git
+cd Nexora--video-calling-and-real-time-chat-application
+```
+
+### 2. Configure the Backend
+
+Navigate to the backend directory:
 
 ```bash
 cd backend
 npm install
 ```
 
-Create a `.env` file using `.env.example` as a reference, then add your environment variables.
+Create a `.env` file using `.env.example` as a reference.
+
+Configure the following variables:
+
+```env
+PORT=5001
+NODE_ENV=development
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET_KEY=your_random_jwt_secret
+STREAM_API_KEY=your_stream_public_api_key
+STREAM_API_SECRET=your_stream_private_api_secret
+CLIENT_URL=http://localhost:5173
+```
+
+Generate a random JWT secret with:
+
+```bash
+node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"
+```
 
 Start the backend:
 
@@ -45,20 +221,34 @@ Start the backend:
 npm run dev
 ```
 
-The API runs at `http://localhost:5001`.
+The API should be available at:
 
-You can check whether the server is running by opening `http://localhost:5001/api/health`.
+`http://localhost:5001`
 
-### 2. Set Up the Frontend
+Check the health endpoint:
 
-Open a second terminal:
+`http://localhost:5001/api/health`
+
+### 3. Configure the Frontend
+
+Open another terminal in the project root:
 
 ```bash
 cd frontend
 npm install
 ```
 
-Create a `.env` file using the frontend's `.env.example` file. Add your Stream API key.
+Create a `.env` file using `frontend/.env.example` as a reference.
+
+Add your public Stream API key:
+
+```env
+VITE_STREAM_API_KEY=your_stream_public_api_key
+```
+
+If your deployment or local configuration requires a custom API base URL, configure `VITE_API_URL` according to `frontend/src/lib/api.js` and the project's API setup.
+
+**Important:** Never place `STREAM_API_SECRET`, your MongoDB password, or your JWT signing secret in frontend environment variables.
 
 Start the frontend:
 
@@ -66,55 +256,59 @@ Start the frontend:
 npm run dev
 ```
 
-Vite will display the local URL, usually `http://localhost:5173`.
+Vite will display the local development URL, usually:
 
-## Environment Variables
+`http://localhost:5173`
 
-Keep your actual `.env` files private. Never commit passwords, API secrets, or database credentials to GitHub.
+---
 
-### Backend — `backend/.env`
-
-| Variable            | Purpose                                            |
-| ------------------- | -------------------------------------------------- |
-| `MONGO_URI`         | MongoDB connection string                          |
-| `JWT_SECRET_KEY`    | Secret used to sign authentication tokens          |
-| `STREAM_API_KEY`    | Public Stream application key                      |
-| `STREAM_API_SECRET` | Private Stream application secret                  |
-| `CLIENT_URL`        | Frontend URL, especially in production             |
-| `NODE_ENV`          | Set to `production` on the hosting platform        |
-| `PORT`              | Server port; the hosting platform may provide this |
-| `COOKIE_SAME_SITE`  | Optional cookie setting                            |
-| `TRUST_PROXY`       | Optional proxy configuration                       |
-
-Generate a strong JWT secret with:
-
-```bash
-node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"
-```
-
-### Frontend — `frontend/.env`
-
-| Variable              | Purpose                                                                    |
-| --------------------- | -------------------------------------------------------------------------- |
-| `VITE_STREAM_API_KEY` | Stream public API key                                                      |
-| `VITE_API_URL`        | Optional API base URL; leave unset when using the recommended `/api` setup |
-
-The frontend's Stream API key must match `STREAM_API_KEY` in the backend. **Never expose `STREAM_API_SECRET` in frontend code.**
-
-Older versions of the project used the misspelled variables `STEAM_API_KEY` and `STEAM_API_SECRET`. Update them to `STREAM_API_KEY` and `STREAM_API_SECRET` when using the current configuration.
-
-## Running Tests
+## 🔑 Environment Variables
 
 ### Backend
 
-The backend test suite uses a separate test database. Make sure its database name ends with `_test`, because the tests may clear its contents.
+| Variable            | Purpose                                       |
+| ------------------- | --------------------------------------------- |
+| `MONGO_URI`         | MongoDB connection string                     |
+| `JWT_SECRET_KEY`    | Secret used for signing authentication tokens |
+| `STREAM_API_KEY`    | Public Stream application key                 |
+| `STREAM_API_SECRET` | Private Stream application secret             |
+| `CLIENT_URL`        | Allowed frontend origin                       |
+| `NODE_ENV`          | Application environment                       |
+| `PORT`              | Backend server port                           |
+| `COOKIE_SAME_SITE`  | Optional cookie configuration                 |
+| `TRUST_PROXY`       | Optional reverse-proxy configuration          |
 
-For example:
+### Frontend
+
+| Variable              | Purpose                                                      |
+| --------------------- | ------------------------------------------------------------ |
+| `VITE_STREAM_API_KEY` | Public Stream application key                                |
+| `VITE_API_URL`        | Optional API base URL, depending on deployment configuration |
+
+Keep real credentials in local environment files or your hosting provider's environment settings. Never commit them to GitHub.
+
+---
+
+## 🧪 Running Tests
+
+### Backend
+
+The backend tests use a separate test database. Make sure the test database name ends with `_test` because tests may clear its contents.
+
+Example:
 
 ```bash
 cd backend
-TEST_MONGO_URI=mongodb://127.0.0.1:27017/nexora_test npm test
 ```
+
+In PowerShell, set the test database URI and run the tests:
+
+```powershell
+$env:TEST_MONGO_URI="mongodb://127.0.0.1:27017/nexora_test"
+npm test
+```
+
+Use the environment variable name expected by the backend test configuration.
 
 ### Frontend
 
@@ -125,145 +319,100 @@ npm run lint
 npm run build
 ```
 
-Use the commands supported by the scripts in each `package.json`.
-
-The automated tests do not make real Stream Chat API calls. Chat and video calling should also be tested manually with valid Stream credentials.
-
-## Deployment
-
-Nexora can be deployed using the following setup:
-
-* **Frontend:** Vercel
-* **Backend:** Render
-* **Database:** MongoDB Atlas
-* **Chat and video:** Stream
-
-### 1. Configure MongoDB Atlas
-
-Create a database and database user, then copy the connection string into the backend's `MONGO_URI` environment variable.
-
-Configure Network Access to allow connections from your backend host. Use a strong database password and restrict network access where practical.
-
-### 2. Deploy the Backend on Render
-
-Create a new Web Service and configure:
-
-| Setting           | Value         |
-| ----------------- | ------------- |
-| Root directory    | `backend`     |
-| Build command     | `npm install` |
-| Start command     | `npm start`   |
-| Health check path | `/api/health` |
-
-Add the required backend environment variables in Render's dashboard.
-
-Set `CLIENT_URL` to your deployed frontend's origin. Configure `TRUST_PROXY` according to your hosting setup.
-
-Free hosting instances may sleep when idle, so the first request after a period of inactivity can take longer.
-
-### 3. Deploy the Frontend on Vercel
-
-Create a Vercel project using your GitHub repository.
-
-| Setting          | Value           |
-| ---------------- | --------------- |
-| Root directory   | `frontend`      |
-| Build command    | `npm run build` |
-| Output directory | `dist`          |
-
-Add `VITE_STREAM_API_KEY` to the frontend's environment variables.
-
-If you're using Vercel for the frontend and Render for the backend, configure `frontend/vercel.json` to forward API requests to your Render service and support React Router routes.
-
-Example:
-
-```json
-{
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "https://YOUR-SERVICE.onrender.com/api/:path*"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
-}
-```
-
-Replace `YOUR-SERVICE` with your actual Render service hostname.
-
-Using this rewrite lets the frontend send API requests through the Vercel domain, which also helps avoid cross-site cookie problems. Keep the backend's origin checks and cookie configuration consistent with your deployment.
-
-### 4. Configure Stream
-
-Use the correct Stream application credentials for your deployment.
-
-Review the permissions for the `messaging` channel type and the `default` video call type before making the application publicly available. The Stream dashboard's permissions determine who can access channels and calls.
-
-### Before Going Live
-
-* Rotate any secrets that have previously been exposed.
-* Verify authentication and cookie behavior in production.
-* Test messaging and video calls with two separate accounts.
-* Check that private conversations are protected by the appropriate Stream permissions.
-* Replace the placeholder screenshots and images with actual Nexora screenshots.
-
-## Updating Existing Avatars
-
-Some older accounts may still use avatar URLs from a provider that is no longer available, or URLs containing email addresses.
-
-The project includes an avatar migration script that updates the `profilePic` field. It runs in preview mode by default.
-
-From the backend directory:
-
-```bash
-npm run migrate:avatars
-```
-
-After reviewing the changes and taking a database backup, apply them with:
-
-```bash
-npm run migrate:avatars -- --apply
-```
-
-To also update profile pictures stored in Stream:
-
-```bash
-npm run migrate:avatars -- --apply --sync-stream
-```
-
-The migration should only be applied after reviewing the script and confirming the database connection.
-
-## Manual Testing
-
-Before considering the application ready for use, test it with two separate accounts, preferably in different browsers.
-
-1. Create two accounts and complete onboarding.
-2. Send a friend request and accept it.
-3. Open a chat and exchange messages in both directions.
-4. Refresh the page and check that message history is still available.
-5. Start a video call and join from the second account.
-6. Check audio and video in both directions.
-7. Leave the call and verify that the camera and microphone are no longer active.
-
-These checks require valid Stream credentials and access to the relevant browser permissions.
-
-## Current Limitations
-
-* Friend requests can be accepted, but rejecting a request is not currently supported.
-* Stream permissions control access to private channels and video calls. Review these permissions carefully before making the application public.
-* Friend-request pairs do not currently have a unique database index to prevent every possible duplicate-request race condition.
-* Accepted friend-request notifications are not currently marked as read.
-
-## Security Notes
-
-* Never commit `.env` files or private credentials.
-* Use a strong JWT secret and database password.
-* Keep Stream's private API secret on the backend only.
-* Review authentication, database access, and Stream permissions before deploying publicly.
+The test and build scripts available in each `package.json` determine which commands are supported.
 
 ---
 
-**Nexora — Connect, chat, and call.**
+## 🌐 Deployment
+
+The application can be deployed using the following services:
+
+| Component      | Suggested Platform |
+| -------------- | ------------------ |
+| Frontend       | Vercel             |
+| Backend        | Render             |
+| Database       | MongoDB Atlas      |
+| Chat and video | Stream             |
+
+### Backend Deployment
+
+Create a Web Service on Render and configure:
+
+| Setting           | Value         |
+| ----------------- | ------------- |
+| Root Directory    | `backend`     |
+| Build Command     | `npm install` |
+| Start Command     | `npm start`   |
+| Health Check Path | `/api/health` |
+
+Add the required backend environment variables through Render's dashboard.
+
+Set `CLIENT_URL` to the deployed frontend origin and configure cookie and proxy settings according to the final deployment architecture.
+
+### Frontend Deployment
+
+Create a Vercel project connected to the GitHub repository.
+
+| Setting          | Value           |
+| ---------------- | --------------- |
+| Root Directory   | `frontend`      |
+| Build Command    | `npm run build` |
+| Output Directory | `dist`          |
+
+Configure `VITE_STREAM_API_KEY` and the API routing required by the selected deployment architecture.
+
+If using a Vercel rewrite to forward `/api` requests to Render, update `frontend/vercel.json` with the actual backend hostname and verify the routing before going live.
+
+### Stream Configuration
+
+Use the correct Stream application credentials for your deployment.
+
+Review the permissions configured for messaging channels and video calls. Verify that only authorized users can access private conversations and calls.
+
+---
+
+## ✅ Manual Testing Checklist
+
+Before considering the application ready for public use, test it with two separate accounts, preferably in different browsers.
+
+* [ ] Register two accounts.
+* [ ] Log in and complete onboarding.
+* [ ] Discover another user.
+* [ ] Send and accept a friend request.
+* [ ] Open a chat and exchange messages in both directions.
+* [ ] Refresh the page and verify message history.
+* [ ] Start a video call and join from the second account.
+* [ ] Verify audio and video in both directions.
+* [ ] Leave the call and verify that the camera and microphone stop.
+* [ ] Check authentication behavior after refreshing the page.
+* [ ] Verify that private chats and calls cannot be accessed by unauthorized users.
+
+These checks require valid Stream credentials and appropriate browser permissions.
+
+## ⚠️ Current Limitations
+
+* Rejecting friend requests is not currently supported.
+* Accepted friend-request notifications are not currently marked as read.
+* Friend-request pairs do not currently have a unique database index that prevents every possible duplicate-request race condition.
+* Stream permissions must be configured and tested carefully to protect private chats and calls.
+* Real-time messaging and video calling require separate manual verification with valid Stream credentials.
+
+## 🔐 Security Notes
+
+* Never commit real `.env` files.
+* Keep database credentials, JWT secrets, and Stream's private API secret on the backend.
+* Use strong passwords and rotate any credentials that have been exposed.
+* Review authentication, database access, CORS, cookies, and Stream permissions before public deployment.
+* Back up the database before running migration scripts.
+
+---
+
+## 👨‍💻 Author
+
+**Md Akib Khan**
+
+GitHub: [CodeByAkib](https://github.com/CodeByAkib)
+
+## 💬 Nexora
+
+**Connect, chat, and call—all in one place.**
