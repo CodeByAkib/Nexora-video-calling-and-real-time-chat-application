@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Stream Chat dark theme for Nexora.
+  The chat is rendered with theme="str-chat__theme-dark" (see ChatPage); these variables swap
+  Stream's palette for Nexora's navy / violet / cyan. Variables are used instead of overriding
+  individual classes, so nothing fights Stream's own layout and heights.
+*/
+.str-chat {
+  --str-chat__primary-color: #8b5cf6;
+  --str-chat__active-primary-color: #7c3aed;
+  --str-chat__background-color: #080816;
+  --str-chat__secondary-background-color: #111120;
+  --str-chat__surface-color: #111120;
+  --str-chat__text-color: #e2e8f0;
+  --str-chat__text-low-emphasis-color: #94a3b8;
+  --str-chat__channel-header-color: #e2e8f0;
+  --str-chat__message-bubble-background-color: #19192b;
+  --str-chat__message-bubble-color: #e2e8f0;
+  --str-chat__own-message-bubble-background-color: #6d28d9;
+  --str-chat__own-message-bubble-color: #ffffff;
+  --str-chat__border-radius-circle: 9999px;
+}
+
+/* Fill the space the page gives us (the page header takes its own height). */
+.str-chat.str-chat__theme-dark,
+.str-chat__channel,
+.str-chat__container,
+.str-chat__channel .str-chat__container {
+  height: 100%;
+  max-height: 100%;
+}
+
+.str-chat__channel {
+  background: var(--str-chat__background-color);
+}
+
+/* One border at the edges only - no nested box inside a box. */
+.str-chat__container {
+  border: 0;
+  box-shadow: none;
+}
+
+.str-chat__list-notifications {
+  display: none;
+}
