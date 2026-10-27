@@ -1,6 +1,13 @@
 # Nexora 💬
 
 ### Connect, Chat & Call
+<p align="center">
+  <img
+    src="https://github.com/user-attachments/assets/b7fa75e1-c640-4ddc-b27f-61e039ae819d"
+    alt="Nexora Launch Celebration"
+    width="500"
+  />
+</p>
 
 Nexora is a real-time communication application that helps people connect with others, build friendships, exchange messages, and communicate through video calls—all in one place.
 
@@ -389,13 +396,13 @@ Before considering the application ready for public use, test it with two separa
 
 These checks require valid Stream credentials and appropriate browser permissions.
 
-## ⚠️ Current Limitations
+## 🚀 Future Enhancements
 
-* Rejecting friend requests is not currently supported.
-* Accepted friend-request notifications are not currently marked as read.
-* Friend-request pairs do not currently have a unique database index that prevents every possible duplicate-request race condition.
-* Stream permissions must be configured and tested carefully to protect private chats and calls.
-* Real-time messaging and video calling require separate manual verification with valid Stream credentials.
+* Friend Request Management: Add the ability to reject incoming friend requests and improve request management.
+* Notification Management: Implement read/unread status for friend-request notifications.
+* Database Optimization: Introduce database constraints and indexes to prevent duplicate friend requests and improve data consistency.
+* Enhanced Security: Strengthen access control and permissions for private chats and video calls.
+* Improved Reliability: Expand automated and integration testing for real-time messaging and video calling.
 
 ## 🔐 Security Notes
 
