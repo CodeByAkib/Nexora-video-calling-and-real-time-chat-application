@@ -1,13 +1,8 @@
 # Nexora 💬
 
 ### Connect, Chat & Call
-<p align="center">
-  <img
-    src="https://github.com/user-attachments/assets/b7fa75e1-c640-4ddc-b27f-61e039ae819d"
-    alt="Nexora Launch Celebration"
-    width="500"
-  />
-</p>
+
+🌐 Live Demo: https://nexora-messenger.vercel.app
 
 Nexora is a real-time communication application that helps people connect with others, build friendships, exchange messages, and communicate through video calls—all in one place.
 
@@ -415,6 +410,13 @@ These checks require valid Stream credentials and appropriate browser permission
 ---
 
 ## 👨‍💻 Author
+ <p align="center">
+  <img
+    src="https://github.com/user-attachments/assets/b7fa75e1-c640-4ddc-b27f-61e039ae819d"
+    alt="Nexora Launch Celebration"
+    width="300"
+  />
+</p>
 
 **Md Akib Khan**
 
